@@ -25,10 +25,6 @@ filterButtons.forEach(button => button.addEventListener('click', () => {
 
 const toast = document.querySelector('.toast');
 let toastTimer;
-document.querySelectorAll('.add-btn').forEach(button => button.addEventListener('click', () => {
-  clearTimeout(toastTimer); toast.classList.add('show');
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
-}));
 
 // Easter egg: Alt + Ctrl + Shift + S, seguido de un clic en Instagram.
 const instagramLink = document.querySelector('#instagram-link');

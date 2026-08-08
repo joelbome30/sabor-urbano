@@ -1,0 +1,12 @@
+.dish-image.crop-burger,
+.dish-image.crop-tacos,
+.dish-image.crop-fries {
+  background-position: center;
+  background-size: cover;
+}
+
+.dish-image.crop-burger { background-image: url("assets/triplecarne.webp"); }
+.dish-image.crop-tacos { background-image: url("assets/TACOS.webp"); }
+.dish-image.crop-fries { background-image: url("assets/papas.webp"); }
+
+.dish-info > div { max-width: 100%; }
