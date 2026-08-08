@@ -1,0 +1,22 @@
+/* Aura optimizada: anima transform y opacity para evitar repintados costosos. */
+.aura-bg{inset:-12%;filter:none;opacity:.32;background:radial-gradient(circle at 25% 40%,#8b00ff 0,transparent 35%),radial-gradient(circle at 75% 55%,#00bcd4 0,transparent 32%),#09000e;will-change:transform}
+.aura-rays{inset:-20%;opacity:.45;will-change:transform}
+.aura-noise{display:none}
+.aura-mode h2{filter:none;text-shadow:0 0 18px #00fff2,0 0 42px #8b00ff;will-change:transform,opacity;animation:auraPulseLite .7s ease-in-out infinite alternate}
+.aura-item{filter:none;will-change:transform,opacity;animation:auraFloatLite 1.25s ease-in-out infinite alternate}
+.aura-item img{box-shadow:0 0 18px currentColor}
+.aura-mode.stage-0 .aura-item-1,.aura-mode.stage-1 .aura-item-2,.aura-mode.stage-2 .aura-item-3{filter:none;text-shadow:0 0 20px currentColor}
+.aura-mode.stage-0 .aura-item-2,.aura-mode.stage-0 .aura-item-3,.aura-mode.stage-1 .aura-item-1,.aura-mode.stage-1 .aura-item-3,.aura-mode.stage-2 .aura-item-1,.aura-mode.stage-2 .aura-item-2{filter:none;opacity:.35}
+.aura-mode.aura-beat-a,.aura-mode.aura-beat-b{animation:beatNudge .16s steps(2)}
+.aura-mode.aura-beat-a .aura-flash,.aura-mode.aura-beat-b .aura-flash{animation:beatFlashLite .14s steps(2)}
+.aura-mode.aura-beat-a .aura-rays{transform:rotate(2deg)}
+.aura-mode.aura-beat-b .aura-rays{transform:rotate(-2deg)}
+.story:after{filter:none;width:260px;height:260px;background:radial-gradient(circle,var(--lime),transparent 68%);opacity:.1}
+.site-header.scrolled{backdrop-filter:blur(8px)}
+.menu-section,.story,.visit{content-visibility:auto;contain-intrinsic-size:900px}
+@keyframes beatNudge{50%{transform:translate3d(2px,-1px,0)}}
+@keyframes beatFlashLite{0%{opacity:.16}100%{opacity:0}}
+@keyframes auraPulseLite{to{transform:scale(1.025);opacity:.92}}
+@keyframes auraFloatLite{to{transform:translate3d(0,12px,0)}}
+@media(max-width:850px){.aura-bg{opacity:.24}.aura-rays,.aura-scanlines{display:none}.aura-particle:nth-child(n+9){display:none}.site-header.scrolled{backdrop-filter:none;background:rgba(17,17,15,.96)}}
+@media(prefers-reduced-motion:reduce){.aura-mode.aura-beat-a,.aura-mode.aura-beat-b{animation:none}.aura-flash{display:none}}

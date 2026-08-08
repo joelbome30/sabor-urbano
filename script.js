@@ -65,8 +65,9 @@ let auraArmed = false;
 let auraBeatTimer;
 let auraStageTimer;
 let auraStage = 0;
+let alternateBeat = false;
 
-for (let i = 0; i < 42; i += 1) {
+for (let i = 0; i < 14; i += 1) {
   const particle = document.createElement('i');
   particle.className = 'aura-particle';
   particle.style.left = `${Math.random() * 100}%`;
@@ -96,9 +97,9 @@ function openAura() {
   yaraAudio.volume = .8;
   yaraAudio.play().catch(() => notifyAura('Activa el sonido del navegador para escuchar Yara Yara.'));
   auraBeatTimer = setInterval(() => {
-    auraMode.classList.remove('aura-beat');
-    void auraMode.offsetWidth;
-    auraMode.classList.add('aura-beat');
+    alternateBeat = !alternateBeat;
+    auraMode.classList.toggle('aura-beat-a', alternateBeat);
+    auraMode.classList.toggle('aura-beat-b', !alternateBeat);
   }, 430);
   auraStageTimer = setInterval(() => {
     auraMode.classList.remove(`stage-${auraStage}`);
@@ -110,8 +111,9 @@ function openAura() {
 function closeAura() {
   clearInterval(auraBeatTimer);
   clearInterval(auraStageTimer);
-  auraMode.classList.remove('aura-beat', 'stage-0', 'stage-1', 'stage-2');
+  auraMode.classList.remove('aura-beat-a', 'aura-beat-b', 'stage-0', 'stage-1', 'stage-2');
   auraStage = 0;
+  alternateBeat = false;
   auraMode.classList.remove('active');
   auraMode.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
