@@ -1,5 +1,34 @@
 const header = document.querySelector('.site-header');
 const menuToggle = document.querySelector('.menu-toggle');
+const hero = document.querySelector('.hero');
+
+function updateHeader() {
+  header.classList.toggle('scrolled', window.scrollY > 36);
+}
+updateHeader();
+window.addEventListener('scroll', updateHeader, { passive: true });
+
+const auraLayer = document.createElement('div');
+auraLayer.className = 'hero-aura-layer';
+auraLayer.setAttribute('aria-hidden', 'true');
+for (let i = 0; i < 12; i += 1) {
+  const spark = document.createElement('i');
+  spark.style.setProperty('--x', `${5 + Math.random() * 90}%`);
+  spark.style.setProperty('--delay', `${Math.random() * -7}s`);
+  spark.style.setProperty('--duration', `${4 + Math.random() * 5}s`);
+  spark.style.setProperty('--size', `${3 + Math.random() * 7}px`);
+  auraLayer.appendChild(spark);
+}
+hero.appendChild(auraLayer);
+
+let pointerFrame;
+document.addEventListener('pointermove', event => {
+  cancelAnimationFrame(pointerFrame);
+  pointerFrame = requestAnimationFrame(() => {
+    document.documentElement.style.setProperty('--aura-x', `${event.clientX}px`);
+    document.documentElement.style.setProperty('--aura-y', `${event.clientY}px`);
+  });
+}, { passive: true });
 menuToggle.addEventListener('click', () => {
   const open = header.classList.toggle('open');
   menuToggle.setAttribute('aria-expanded', open);
