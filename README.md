@@ -16,4 +16,3 @@ Después abre `http://localhost:4173`.
 - Animaciones de entrada, scroll y estados hover.
 - Diseño responsive para escritorio y móvil.
 - Fotografías optimizadas en WebP.
-- Easter egg activado con `Alt + Ctrl + Shift + S` y un clic en Instagram.
