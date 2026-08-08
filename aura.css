@@ -1,0 +1,30 @@
+.aura-mode{position:fixed;inset:0;z-index:1000;background:#020005;color:white;display:grid;place-items:center;overflow:hidden;visibility:hidden;opacity:0;transition:opacity .25s,visibility .25s}
+.aura-mode.active{visibility:visible;opacity:1}
+.aura-bg{position:absolute;inset:-30%;background:conic-gradient(from 0deg,#ff004c,#ffeb00,#4dff00,#00f0ff,#9b00ff,#ff004c);filter:blur(70px) saturate(1.8);opacity:.55;animation:auraSpin 4s linear infinite}
+.aura-rays{position:absolute;inset:-50%;background:repeating-conic-gradient(from 0deg,transparent 0 8deg,rgba(255,255,255,.16) 9deg,transparent 12deg);animation:auraSpin 12s linear infinite reverse}
+.aura-noise{position:absolute;inset:0;opacity:.22;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='x'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' seed='9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23x)'/%3E%3C/svg%3E")}
+.aura-mode:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 160px 40px #000;pointer-events:none}
+.aura-mode h2{position:absolute;z-index:4;text-align:center;font:700 clamp(80px,14vw,220px)/.72 Oswald;margin:0;letter-spacing:-.07em;color:white;filter:drop-shadow(0 0 12px #00fff2) drop-shadow(0 0 45px #8b00ff);animation:auraPulse .52s ease-in-out infinite alternate}
+.aura-mode h2 em{font-style:normal;color:#d7ff00;-webkit-text-stroke:3px #111}
+.aura-kicker{position:absolute;z-index:7;top:5vh;font:700 clamp(12px,1.5vw,20px) Oswald;letter-spacing:.35em;color:#d7ff00;text-shadow:0 0 14px #d7ff00;animation:glitchText .25s steps(2) infinite}
+.aura-close{position:absolute;z-index:10;right:24px;top:20px;width:48px;height:48px;border:2px solid white;border-radius:50%;color:white;background:#0008;font-size:30px;cursor:pointer;transition:.2s}
+.aura-close:hover{background:#d7ff00;color:#111;transform:rotate(90deg) scale(1.1)}
+.aura-gallery{position:absolute;z-index:6;inset:0;pointer-events:none}
+.aura-item{position:absolute;width:clamp(140px,20vw,290px);margin:0;filter:drop-shadow(0 0 12px #fff) drop-shadow(0 0 35px currentColor);animation:auraFloat 1.25s ease-in-out infinite alternate}
+.aura-item img{display:block;width:100%;max-height:34vh;object-fit:contain;border:4px solid white;clip-path:polygon(8% 0,100% 5%,94% 100%,0 93%)}
+.aura-item span{display:block;width:max-content;margin:-10px auto 0;padding:7px 13px;background:#111;border:2px solid currentColor;font:700 13px Oswald;letter-spacing:.13em;transform:rotate(-4deg)}
+.aura-item-1{left:4vw;top:13vh;color:#00f7ff;transform:rotate(-8deg)}
+.aura-item-2{right:4vw;top:15vh;color:#d7ff00;transform:rotate(7deg);animation-delay:-.4s}
+.aura-item-3{left:50%;bottom:3vh;color:#ff2b9c;transform:translateX(-50%) rotate(-2deg);animation-delay:-.8s}
+.aura-orbit{position:absolute;z-index:3;border:5px solid #fff;border-radius:50%;box-shadow:0 0 20px #fff,0 0 45px #00f7ff,inset 0 0 35px #ff00d4;animation:auraOrbit 3s linear infinite}
+.orbit-one{width:70vmin;height:70vmin}.orbit-two{width:91vmin;height:34vmin;animation-duration:2s;animation-direction:reverse}
+.aura-particles{position:absolute;inset:0;z-index:5;pointer-events:none}.aura-particle{position:absolute;width:8px;height:8px;background:currentColor;box-shadow:0 0 14px currentColor;animation:particleFly 1.6s linear infinite}
+.shortcut-toast{background:linear-gradient(90deg,#6a00ff,#ff006a)!important;border-color:#d7ff00!important;font-weight:800;letter-spacing:.04em}
+@keyframes auraSpin{to{transform:rotate(360deg)}}
+@keyframes auraPulse{to{transform:scale(1.055);filter:drop-shadow(0 0 20px #d7ff00) drop-shadow(0 0 70px #ff00d4)}}
+@keyframes auraOrbit{to{transform:rotate(360deg) scaleX(.8)}}
+@keyframes auraFloat{to{margin-top:22px;filter:drop-shadow(0 0 25px #fff) drop-shadow(0 0 60px currentColor) saturate(1.5)}}
+@keyframes glitchText{50%{transform:translate(3px,-2px);text-shadow:-4px 0 #ff005d,4px 0 #00f7ff}}
+@keyframes particleFly{from{transform:translateY(110vh) rotate(0) scale(.3)}to{transform:translateY(-20vh) rotate(720deg) scale(2)}}
+@media(max-width:700px){.aura-mode h2{font-size:22vw}.aura-kicker{top:9vh;letter-spacing:.15em}.aura-item{width:35vw}.aura-item-1{top:18vh}.aura-item-2{top:21vh}.aura-item-3{bottom:8vh}.aura-close{right:14px;top:14px}}
+@media(prefers-reduced-motion:reduce){.aura-mode *{animation-duration:2s!important}}
