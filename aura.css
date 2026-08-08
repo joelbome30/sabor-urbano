@@ -28,3 +28,29 @@
 @keyframes particleFly{from{transform:translateY(110vh) rotate(0) scale(.3)}to{transform:translateY(-20vh) rotate(720deg) scale(2)}}
 @media(max-width:700px){.aura-mode h2{font-size:22vw}.aura-kicker{top:9vh;letter-spacing:.15em}.aura-item{width:35vw}.aura-item-1{top:18vh}.aura-item-2{top:21vh}.aura-item-3{bottom:8vh}.aura-close{right:14px;top:14px}}
 @media(prefers-reduced-motion:reduce){.aura-mode *{animation-duration:2s!important}}
+
+/* Secuencia phonk inspirada en cortes, zooms y letterbox cinematográfico. */
+.aura-scanlines{position:absolute;z-index:8;inset:0;pointer-events:none;opacity:.14;background:repeating-linear-gradient(0deg,transparent 0 3px,#000 4px 5px);mix-blend-mode:multiply}
+.aura-flash{position:absolute;z-index:9;inset:0;background:white;opacity:0;pointer-events:none}
+.aura-mode.aura-beat .aura-flash{animation:beatFlash .16s steps(2)}
+.aura-mode.aura-beat{animation:beatShake .18s steps(2)}
+.aura-letterbox:before,.aura-letterbox:after{content:"";position:absolute;z-index:8;left:0;width:100%;height:8vh;background:#000;box-shadow:0 0 35px #000}.aura-letterbox:before{top:0}.aura-letterbox:after{bottom:0}
+.aura-intro{position:absolute;z-index:12;inset:0;background:#020202;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;visibility:hidden}.aura-mode.active .aura-intro{animation:introExit 2.15s forwards}.aura-intro span{font:700 12px Oswald;letter-spacing:.45em;color:#aaa}.aura-intro strong{font:700 clamp(70px,13vw,190px)/.78 Oswald;color:white;margin-top:25px;text-shadow:-6px 0 #ff005d,6px 0 #00f7ff}
+.aura-meter{position:absolute;z-index:10;right:6vw;bottom:10vh;width:min(310px,34vw);display:grid;grid-template-columns:1fr auto;gap:7px 14px;align-items:end;font:700 10px Oswald;letter-spacing:.18em}.aura-meter span{grid-column:1/-1}.aura-meter>div{height:10px;border:1px solid white;background:#111;overflow:hidden}.aura-meter i{display:block;width:100%;height:100%;background:linear-gradient(90deg,#00f7ff,#d7ff00,#fff);box-shadow:0 0 18px #d7ff00;transform-origin:left}.aura-meter strong{font:700 30px Oswald;color:#d7ff00;text-shadow:0 0 15px #d7ff00}
+.aura-caption{position:absolute;z-index:10;left:5vw;bottom:10vh;margin:0;font:700 clamp(10px,1vw,14px) Oswald;letter-spacing:.22em;color:#fff;text-shadow:0 0 12px #00f7ff}
+.aura-mode.stage-0 .aura-item-1,.aura-mode.stage-1 .aura-item-2,.aura-mode.stage-2 .aura-item-3{z-index:8;filter:drop-shadow(0 0 30px white) drop-shadow(0 0 85px currentColor) saturate(1.8);animation:stagePunch .7s cubic-bezier(.18,.8,.25,1)}
+.aura-mode.stage-2 .aura-item-3{animation-name:stagePunchCenter}
+.aura-mode.stage-0 .aura-item-2,.aura-mode.stage-0 .aura-item-3,.aura-mode.stage-1 .aura-item-1,.aura-mode.stage-1 .aura-item-3,.aura-mode.stage-2 .aura-item-1,.aura-mode.stage-2 .aura-item-2{opacity:.42;filter:grayscale(.65) brightness(.65)}
+.aura-mode.stage-0 h2{transform:translateX(2vw)}.aura-mode.stage-1 h2{transform:translateX(-2vw)}
+@keyframes beatFlash{0%{opacity:.42}100%{opacity:0}}
+@keyframes beatShake{0%{transform:translate(0)}30%{transform:translate(-5px,3px)}65%{transform:translate(4px,-2px)}100%{transform:translate(0)}}
+@keyframes introScan{50%{opacity:.35}}
+@keyframes introHit{0%{opacity:0;transform:scale(2.6);filter:blur(18px)}55%{opacity:1;transform:scale(.9);filter:none}70%{transform:scale(1.07)}100%{transform:scale(1)}}
+@keyframes introExit{0%,82%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+@keyframes meterCharge{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes stagePunch{0%{transform:scale(.7) rotate(-5deg);opacity:.2}45%{transform:scale(1.16) rotate(2deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes stagePunchCenter{0%{transform:translateX(-50%) scale(.7) rotate(-5deg);opacity:.2}45%{transform:translateX(-50%) scale(1.16) rotate(2deg);opacity:1}100%{transform:translateX(-50%) scale(1) rotate(0)}}
+@media(max-width:700px){.aura-letterbox:before,.aura-letterbox:after{height:6vh}.aura-meter{right:5vw;bottom:7vh;width:42vw}.aura-caption{bottom:7vh;width:42vw}.aura-intro strong{font-size:22vw}.aura-mode.stage-0 h2,.aura-mode.stage-1 h2{transform:none}}
+.aura-mode.active .aura-intro span{animation:introScan .65s steps(2) infinite}
+.aura-mode.active .aura-intro strong{animation:introHit .42s 1.05s both}
+.aura-mode.active .aura-meter i{animation:meterCharge 1.1s 1.25s both}

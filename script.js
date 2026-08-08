@@ -62,6 +62,9 @@ const auraClose = auraMode.querySelector('.aura-close');
 const yaraAudio = document.querySelector('#yara-audio');
 const particleField = auraMode.querySelector('.aura-particles');
 let auraArmed = false;
+let auraBeatTimer;
+let auraStageTimer;
+let auraStage = 0;
 
 for (let i = 0; i < 42; i += 1) {
   const particle = document.createElement('i');
@@ -86,14 +89,29 @@ function openAura() {
     image.removeAttribute('data-src');
   });
   auraMode.classList.add('active');
+  auraMode.classList.add('stage-0');
   auraMode.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
   yaraAudio.currentTime = 0;
   yaraAudio.volume = .8;
   yaraAudio.play().catch(() => notifyAura('Activa el sonido del navegador para escuchar Yara Yara.'));
+  auraBeatTimer = setInterval(() => {
+    auraMode.classList.remove('aura-beat');
+    void auraMode.offsetWidth;
+    auraMode.classList.add('aura-beat');
+  }, 430);
+  auraStageTimer = setInterval(() => {
+    auraMode.classList.remove(`stage-${auraStage}`);
+    auraStage = (auraStage + 1) % 3;
+    auraMode.classList.add(`stage-${auraStage}`);
+  }, 1450);
 }
 
 function closeAura() {
+  clearInterval(auraBeatTimer);
+  clearInterval(auraStageTimer);
+  auraMode.classList.remove('aura-beat', 'stage-0', 'stage-1', 'stage-2');
+  auraStage = 0;
   auraMode.classList.remove('active');
   auraMode.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
