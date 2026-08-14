@@ -125,7 +125,7 @@ document.addEventListener('keydown', event => {
   if (event.altKey && event.ctrlKey && event.shiftKey && event.code === 'KeyS') {
     event.preventDefault();
     auraArmed = true;
-    notifyAura('✦ Código aceptado. Ahora haz clic en Instagram ✦');
+    notifyAura('✦ Capiche Brrother ✦');
   }
   if (event.key === 'Escape' && auraMode.classList.contains('active')) closeAura();
 });
