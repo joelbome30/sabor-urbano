@@ -48,3 +48,25 @@ html{scroll-padding-top:86px}
   .aura-item img{max-height:22vh}
   .aura-kicker{top:8vh}
 }
+
+/* Marquesina realmente continua: dos copias iguales recorren exactamente media pista. */
+.ticker .ticker-track{
+  display:flex;
+  width:max-content;
+  padding:0;
+  word-spacing:normal;
+  animation:tickerLoop 18s linear infinite;
+  will-change:transform;
+}
+.ticker .ticker-copy{
+  display:block;
+  flex:none;
+  padding:17px 36px 17px 0;
+  word-spacing:25px;
+  white-space:nowrap;
+}
+@keyframes tickerLoop{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-50%,0,0)}
+}
+@media(prefers-reduced-motion:reduce){.ticker .ticker-track{animation-duration:45s}}
