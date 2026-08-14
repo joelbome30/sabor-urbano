@@ -2,6 +2,10 @@ const header = document.querySelector('.site-header');
 const menuToggle = document.querySelector('.menu-toggle');
 const hero = document.querySelector('.hero');
 
+window.addEventListener('pageshow', () => {
+  if (!window.location.hash) window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+});
+
 function updateHeader() {
   header.classList.toggle('scrolled', window.scrollY > 36);
 }
