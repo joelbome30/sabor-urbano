@@ -20,3 +20,31 @@
 @keyframes auraFloatLite{to{transform:translate3d(0,12px,0)}}
 @media(max-width:850px){.aura-bg{opacity:.24}.aura-rays,.aura-scanlines{display:none}.aura-particle:nth-child(n+9){display:none}.site-header.scrolled{backdrop-filter:none;background:rgba(17,17,15,.96)}}
 @media(prefers-reduced-motion:reduce){.aura-mode.aura-beat-a,.aura-mode.aura-beat-b{animation:none}.aura-flash{display:none}}
+
+/* Ajustes para portátiles y ventanas panorámicas de poca altura. */
+html{scroll-padding-top:86px}
+#menu,#nosotros,#visitanos{scroll-margin-top:70px}
+@media(max-height:760px) and (min-width:851px){
+  .hero{min-height:620px;height:100svh;padding-top:105px;padding-bottom:36px}
+  .hero-copy{transform:scale(.82);transform-origin:left center}
+  .hero-badge{width:96px;height:96px;bottom:28px}
+  .scroll-cue{display:none}
+  .aura-letterbox:before,.aura-letterbox:after{height:5vh}
+  .aura-kicker{z-index:10;top:7vh}
+  .aura-mode h2{font-size:min(12vw,150px);line-height:.7}
+  .aura-item{width:min(16vw,190px)}
+  .aura-item img{max-height:25vh}
+  .aura-item-1{left:6vw;top:15vh;transform:rotate(-5deg)}
+  .aura-item-2{right:7vw;top:16vh;transform:rotate(5deg)}
+  .aura-item-3{bottom:8vh;width:min(15vw,175px)}
+  .aura-meter{right:6vw;bottom:7vh;width:min(270px,28vw)}
+  .aura-caption{left:5vw;bottom:7vh}
+  .aura-close{top:12px;right:20px}
+}
+@media(max-height:620px) and (min-width:851px){
+  .hero-copy{transform:scale(.7)}
+  .aura-mode h2{font-size:min(10vw,125px)}
+  .aura-item{width:min(14vw,155px)}
+  .aura-item img{max-height:22vh}
+  .aura-kicker{top:8vh}
+}
